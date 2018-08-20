@@ -80,4 +80,4 @@ theme: landscape
 deploy:
   type: git
   repo: git@github.com:peterlxb/peterlxb.github.io.git
-  branch: hexo
+  branch: master
