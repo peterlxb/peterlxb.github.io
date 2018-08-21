@@ -85,5 +85,5 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:peterlxb/peterlxb.github.io.git
+  repo: https://3dc1193f9a8c39715f3b403f14c8e116463aa0ef@github.com:peterlxb/peterlxb.github.io.git
   branch: master
