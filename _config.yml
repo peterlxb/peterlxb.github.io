@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 拉普拉斯
 ? subtitle
 ? description
 ? keywords
-author: John Doe
+author: Peter Liu
 ? language
 ? timezone
 
@@ -17,6 +17,12 @@ url: http://yoursite.com
 root: /
 permalink: :year/:month/:day/:title/
 ? permalink_defaults
+
+# Social Links Icon
+# Key is the link label showing to user
+# social_icons:
+#   enable: true
+#   Github: github
 
 # Directory
 source_dir: source
