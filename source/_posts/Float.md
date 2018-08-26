@@ -46,8 +46,41 @@ tags: CSS相关
 
 ![](/images/float4.png)
 
+# 清除浮动
+
+## 定义
+
+clear 清除
+
+> 值: left | right | both | none | inherit
+
+> 初始值: none
+
+> 应用于: 块级元素(块级元素指 block 元素，不包括 inline-block 元素)
+
+> 继承性: 无
+
+_设置 clear 属性的元素并不能改变浮动元素，而只能改变自身_
+
+## 方法
+
+清浮动其实就两种方法，一种是在浮动元素下面添加新元素设置 clear 属性；另一种是触发包含块的 BFC，使其包含浮动元素。
+
+在除 IE7-以外的其他浏览器都可以将 clear 属性应用于<br>元素
+
+为浮动元素的 after 伪元素设置 clear 属性
+
+除了清除浮动外，常常也需要解决外边距 margin 重叠的问题。这时，清除浮动和解决 margin 重叠的代码如下
+
+```
+.clear:before,.clear:after{content:"";display:table;}
+.clear:after{clear:both;}
+.clear{zoom:1}
+```
+
 #### 参考文章
 
 [深入理解 CSS 浮动](https://xiaohuochai.site/CSS/layout/float/float.html)
+[深入理解 CSS 清除浮动](https://xiaohuochai.site/CSS/layout/float/clear.html)
 [MDN-float](https://developer.mozilla.org/zh-CN/docs/CSS/float)
 [MDN-clear 清除浮动](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear)
