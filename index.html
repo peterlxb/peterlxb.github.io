@@ -323,7 +323,7 @@
                 
               
 
-              <time title="Created: 2018-08-26 10:53:39 / Modified: 12:16:04" itemprop="dateCreated datePublished" datetime="2018-08-26T10:53:39+08:00">2018-08-26</time>
+              <time title="Created: 2018-08-26 10:53:39 / Modified: 21:46:17" itemprop="dateCreated datePublished" datetime="2018-08-26T10:53:39+08:00">2018-08-26</time>
             
 
             
@@ -386,7 +386,26 @@
 <p><img src="/images/float3.png" alt=""></p>
 <h3 id="4-破坏性"><a href="#4-破坏性" class="headerlink" title="4.破坏性"></a>4.破坏性</h3><p>浮动元素脱离正常流，并破坏了自身的行框属性，使其包含块元素的高度塌陷，使浮动框旁边的行框被缩短，从而给浮动框留出空间，行框围绕浮动框重新排列</p>
 <p><img src="/images/float4.png" alt=""></p>
-<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://xiaohuochai.site/CSS/layout/float/float.html" target="_blank" rel="noopener">深入理解 CSS 浮动</a><br><a href="https://developer.mozilla.org/zh-CN/docs/CSS/float" target="_blank" rel="noopener">MDN-float</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear" target="_blank" rel="noopener">MDN-clear 清除浮动</a></p>
+<h1 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>clear 清除</p>
+<blockquote>
+<p>值: left | right | both | none | inherit</p>
+</blockquote>
+<blockquote>
+<p>初始值: none</p>
+</blockquote>
+<blockquote>
+<p>应用于: 块级元素(块级元素指 block 元素，不包括 inline-block 元素)</p>
+</blockquote>
+<blockquote>
+<p>继承性: 无</p>
+</blockquote>
+<p><em>设置 clear 属性的元素并不能改变浮动元素，而只能改变自身</em></p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>清浮动其实就两种方法，一种是在浮动元素下面添加新元素设置 clear 属性；另一种是触发包含块的 BFC，使其包含浮动元素。</p>
+<p>在除 IE7-以外的其他浏览器都可以将 clear 属性应用于<br>元素</p>
+<p>为浮动元素的 after 伪元素设置 clear 属性</p>
+<p>除了清除浮动外，常常也需要解决外边距 margin 重叠的问题。这时，清除浮动和解决 margin 重叠的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.clear:before,.clear:after&#123;content:&quot;&quot;;display:table;&#125;</span><br><span class="line">.clear:after&#123;clear:both;&#125;</span><br><span class="line">.clear&#123;zoom:1&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://xiaohuochai.site/CSS/layout/float/float.html" target="_blank" rel="noopener">深入理解 CSS 浮动</a><br><a href="https://xiaohuochai.site/CSS/layout/float/clear.html" target="_blank" rel="noopener">深入理解 CSS 清除浮动</a><br><a href="https://developer.mozilla.org/zh-CN/docs/CSS/float" target="_blank" rel="noopener">MDN-float</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear" target="_blank" rel="noopener">MDN-clear 清除浮动</a></p>
 
           
         
