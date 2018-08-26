@@ -108,27 +108,30 @@
 
 
 
-  <meta name="description" content="居中布局水平居中布局(子容器和父容器宽度不定情况) inline-block + text-aligninline-block + text-align1234567891011&amp;lt;div class=&amp;quot;parent&amp;quot;&amp;gt;  &amp;lt;div class=&amp;quot;child&amp;quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;.child &amp;#1">
+  <meta name="description" content="深入理解 CSS 浮动定义 MDN：float CSS 属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。该元素从网页的正常流动中移除，尽管仍然保持部分的流动性  浮动元素脱离普通流，然后按照指定方向，向左或者向右移动，碰到父级边界或者另外一个浮动元素停止。  值: left | right | none | inherit   初始值: none   应用于: 所有元素">
 <meta name="keywords" content="CSS相关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS布局-居中布局">
-<meta property="og:url" content="http://yoursite.com/2018/08/21/CSS布局/index.html">
+<meta property="og:title" content="Float">
+<meta property="og:url" content="http://yoursite.com/2018/08/26/Float/index.html">
 <meta property="og:site_name" content="拉普拉斯">
-<meta property="og:description" content="居中布局水平居中布局(子容器和父容器宽度不定情况) inline-block + text-aligninline-block + text-align1234567891011&amp;lt;div class=&amp;quot;parent&amp;quot;&amp;gt;  &amp;lt;div class=&amp;quot;child&amp;quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;.child &amp;#1">
+<meta property="og:description" content="深入理解 CSS 浮动定义 MDN：float CSS 属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。该元素从网页的正常流动中移除，尽管仍然保持部分的流动性  浮动元素脱离普通流，然后按照指定方向，向左或者向右移动，碰到父级边界或者另外一个浮动元素停止。  值: left | right | none | inherit   初始值: none   应用于: 所有元素">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/center.png">
-<meta property="og:updated_time" content="2018-08-21T12:16:50.201Z">
+<meta property="og:image" content="http://yoursite.com/images/float1.png">
+<meta property="og:image" content="http://yoursite.com/images/float2.png">
+<meta property="og:image" content="http://yoursite.com/images/float3.png">
+<meta property="og:image" content="http://yoursite.com/images/float4.png">
+<meta property="og:updated_time" content="2018-08-26T04:16:04.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS布局-居中布局">
-<meta name="twitter:description" content="居中布局水平居中布局(子容器和父容器宽度不定情况) inline-block + text-aligninline-block + text-align1234567891011&amp;lt;div class=&amp;quot;parent&amp;quot;&amp;gt;  &amp;lt;div class=&amp;quot;child&amp;quot;&amp;gt;DEMO&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;.child &amp;#1">
-<meta name="twitter:image" content="http://yoursite.com/images/center.png">
+<meta name="twitter:title" content="Float">
+<meta name="twitter:description" content="深入理解 CSS 浮动定义 MDN：float CSS 属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。该元素从网页的正常流动中移除，尽管仍然保持部分的流动性  浮动元素脱离普通流，然后按照指定方向，向左或者向右移动，碰到父级边界或者另外一个浮动元素停止。  值: left | right | none | inherit   初始值: none   应用于: 所有元素">
+<meta name="twitter:image" content="http://yoursite.com/images/float1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/21/CSS布局/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/26/Float/"/>
 
 
 
@@ -138,7 +141,7 @@
   };
 </script>
 
-  <title>CSS布局-居中布局 | 拉普拉斯</title>
+  <title>Float | 拉普拉斯</title>
   
 
 
@@ -283,7 +286,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/21/CSS布局/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/26/Float/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Peter Liu">
@@ -300,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSS布局-居中布局
+          <h1 class="post-title" itemprop="name headline">Float
               
             
           </h1>
@@ -325,7 +328,7 @@
                 
               
 
-              <time title="Created: 2018-08-21 19:26:33 / Modified: 20:16:50" itemprop="dateCreated datePublished" datetime="2018-08-21T19:26:33+08:00">2018-08-21</time>
+              <time title="Created: 2018-08-26 10:53:39 / Modified: 12:16:04" itemprop="dateCreated datePublished" datetime="2018-08-26T10:53:39+08:00">2018-08-26</time>
             
 
             
@@ -363,24 +366,30 @@
       
 
       
-        <h1 id="居中布局"><a href="#居中布局" class="headerlink" title="居中布局"></a>居中布局</h1><h1 id="水平居中布局-子容器和父容器宽度不定情况"><a href="#水平居中布局-子容器和父容器宽度不定情况" class="headerlink" title="水平居中布局(子容器和父容器宽度不定情况)"></a>水平居中布局(子容器和父容器宽度不定情况)</h1><p><img src="/images/center.png" alt=""></p>
-<h2 id="inline-block-text-align"><a href="#inline-block-text-align" class="headerlink" title="inline-block + text-align"></a>inline-block + text-align</h2><figure class="highlight plain"><figcaption><span>inline-block + text-align</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;child&quot;&gt;DEMO&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.child &#123;</span><br><span class="line">display: inline-block;</span><br><span class="line">&#125;</span><br><span class="line">.parent &#123;</span><br><span class="line">text-align-center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>兼容性好，兼容 IE6-7;</p>
-<p>需要额外代码来修复 text-align 造成问题。</p>
+        <h1 id="深入理解-CSS-浮动"><a href="#深入理解-CSS-浮动" class="headerlink" title="深入理解 CSS 浮动"></a>深入理解 CSS 浮动</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>MDN：<br>float CSS 属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。该元素从网页的正常流动中移除，尽管仍然保持部分的流动性</p>
 </blockquote>
-<h2 id="table-margin"><a href="#table-margin" class="headerlink" title="table + margin"></a>table + margin</h2><figure class="highlight plain"><figcaption><span>table + margin</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;child&quot;&gt;DEMO&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.child &#123;</span><br><span class="line">display:table;</span><br><span class="line">margin: 0 auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="absolute-transform"><a href="#absolute-transform" class="headerlink" title="absolute + transform"></a>absolute + transform</h2><figure class="highlight plain"><figcaption><span>table + margin</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;child&quot;&gt;DEMO&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.parent &#123;</span><br><span class="line">position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">position:absolute;</span><br><span class="line">left:50%;</span><br><span class="line">transform: translateX(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>浮动元素脱离普通流，然后按照指定方向，向左或者向右移动，碰到父级边界或者另外一个浮动元素停止。</p>
 <blockquote>
-<p>居中元素不会对其他元素产生影响</p>
-<p>兼容性较差</p>
+<p>值: left | right | none | inherit</p>
 </blockquote>
-<h2 id="flex-justify-content"><a href="#flex-justify-content" class="headerlink" title="flex + justify-content"></a>flex + justify-content</h2><figure class="highlight plain"><figcaption><span>table + margin</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;child&quot;&gt;DEMO&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.parent &#123;</span><br><span class="line">display: flex;</span><br><span class="line">justify-content: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>table + margin</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;div class=&quot;parent&quot;&gt;</span><br><span class="line">  &lt;div class=&quot;child&quot;&gt;DEMO&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">.parent &#123;</span><br><span class="line">display: flex;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">margin: 0 auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>只需设置父元素即可实现居中布局</p>
-<p>低版本不支持</p>
+<p>初始值: none</p>
 </blockquote>
+<blockquote>
+<p>应用于: 所有元素</p>
+</blockquote>
+<blockquote>
+<p>继承性: 无</p>
+</blockquote>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><h3 id="1-浮动流"><a href="#1-浮动流" class="headerlink" title="1.浮动流"></a>1.浮动流</h3><p>正常流中元素一个接一个排列；浮动元素也构成浮动流</p>
+<p><img src="/images/float1.png" alt=""></p>
+<h3 id="2-块级框"><a href="#2-块级框" class="headerlink" title="2.块级框"></a>2.块级框</h3><p>浮动元素自身会生成一个块级框，而不论这个元素本身是什么，使浮动元素周围的外边距不会合并<br><img src="/images/float2.png" alt=""></p>
+<h3 id="3-包裹性"><a href="#3-包裹性" class="headerlink" title="3.包裹性"></a>3.包裹性</h3><p>浮动元素的包含块是指其最近的块级祖先元素，后代浮动元素不应该超出包含块的上、左、右边界。若不设置包含块的高度，包含块若浮动，则包含块会延伸，进而包含其所有后代浮动元素；若不设置包含块的宽度，包含块若浮动，则包含块宽度由后代浮动元素撑开</p>
+<p><img src="/images/float3.png" alt=""></p>
+<h3 id="4-破坏性"><a href="#4-破坏性" class="headerlink" title="4.破坏性"></a>4.破坏性</h3><p>浮动元素脱离正常流，并破坏了自身的行框属性，使其包含块元素的高度塌陷，使浮动框旁边的行框被缩短，从而给浮动框留出空间，行框围绕浮动框重新排列</p>
+<p><img src="/images/float4.png" alt=""></p>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://xiaohuochai.site/CSS/layout/float/float.html" target="_blank" rel="noopener">深入理解 CSS 浮动</a><br><a href="https://developer.mozilla.org/zh-CN/docs/CSS/float" target="_blank" rel="noopener">MDN-float</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear" target="_blank" rel="noopener">MDN-clear 清除浮动</a></p>
 
       
     </div>
@@ -414,15 +423,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/22/RegExp/" rel="next" title="正则表达式参考手册">
+                <i class="fa fa-chevron-left"></i> 正则表达式参考手册
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/22/RegExp/" rel="prev" title="正则表达式参考手册">
-                正则表达式参考手册 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#居中布局"><span class="nav-number">1.</span> <span class="nav-text">居中布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#水平居中布局-子容器和父容器宽度不定情况"><span class="nav-number">2.</span> <span class="nav-text">水平居中布局(子容器和父容器宽度不定情况)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#inline-block-text-align"><span class="nav-number">2.1.</span> <span class="nav-text">inline-block + text-align</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#table-margin"><span class="nav-number">2.2.</span> <span class="nav-text">table + margin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#absolute-transform"><span class="nav-number">2.3.</span> <span class="nav-text">absolute + transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flex-justify-content"><span class="nav-number">2.4.</span> <span class="nav-text">flex + justify-content</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深入理解-CSS-浮动"><span class="nav-number">1.</span> <span class="nav-text">深入理解 CSS 浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">1.2.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-浮动流"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.浮动流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-块级框"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.块级框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-包裹性"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.包裹性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-破坏性"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.破坏性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

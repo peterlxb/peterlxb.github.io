@@ -277,6 +277,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/26/Float/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peter Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="拉普拉斯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/26/Float/" itemprop="url">
+                  Float
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-26 10:53:39 / Modified: 12:16:04" itemprop="dateCreated datePublished" datetime="2018-08-26T10:53:39+08:00">2018-08-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="深入理解-CSS-浮动"><a href="#深入理解-CSS-浮动" class="headerlink" title="深入理解 CSS 浮动"></a>深入理解 CSS 浮动</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p>MDN：<br>float CSS 属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。该元素从网页的正常流动中移除，尽管仍然保持部分的流动性</p>
+</blockquote>
+<p>浮动元素脱离普通流，然后按照指定方向，向左或者向右移动，碰到父级边界或者另外一个浮动元素停止。</p>
+<blockquote>
+<p>值: left | right | none | inherit</p>
+</blockquote>
+<blockquote>
+<p>初始值: none</p>
+</blockquote>
+<blockquote>
+<p>应用于: 所有元素</p>
+</blockquote>
+<blockquote>
+<p>继承性: 无</p>
+</blockquote>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><h3 id="1-浮动流"><a href="#1-浮动流" class="headerlink" title="1.浮动流"></a>1.浮动流</h3><p>正常流中元素一个接一个排列；浮动元素也构成浮动流</p>
+<p><img src="/images/float1.png" alt=""></p>
+<h3 id="2-块级框"><a href="#2-块级框" class="headerlink" title="2.块级框"></a>2.块级框</h3><p>浮动元素自身会生成一个块级框，而不论这个元素本身是什么，使浮动元素周围的外边距不会合并<br><img src="/images/float2.png" alt=""></p>
+<h3 id="3-包裹性"><a href="#3-包裹性" class="headerlink" title="3.包裹性"></a>3.包裹性</h3><p>浮动元素的包含块是指其最近的块级祖先元素，后代浮动元素不应该超出包含块的上、左、右边界。若不设置包含块的高度，包含块若浮动，则包含块会延伸，进而包含其所有后代浮动元素；若不设置包含块的宽度，包含块若浮动，则包含块宽度由后代浮动元素撑开</p>
+<p><img src="/images/float3.png" alt=""></p>
+<h3 id="4-破坏性"><a href="#4-破坏性" class="headerlink" title="4.破坏性"></a>4.破坏性</h3><p>浮动元素脱离正常流，并破坏了自身的行框属性，使其包含块元素的高度塌陷，使浮动框旁边的行框被缩短，从而给浮动框留出空间，行框围绕浮动框重新排列</p>
+<p><img src="/images/float4.png" alt=""></p>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://xiaohuochai.site/CSS/layout/float/float.html" target="_blank" rel="noopener">深入理解 CSS 浮动</a><br><a href="https://developer.mozilla.org/zh-CN/docs/CSS/float" target="_blank" rel="noopener">MDN-float</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear" target="_blank" rel="noopener">MDN-clear 清除浮动</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/RegExp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -608,7 +771,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
