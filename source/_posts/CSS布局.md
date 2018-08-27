@@ -1,7 +1,8 @@
 ---
 title: CSS布局-居中布局
 date: 2018-08-21 19:26:33
-tags: CSS相关
+categories: CSS
+tags: CSS布局
 ---
 
 # 居中布局

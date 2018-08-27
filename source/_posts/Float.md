@@ -1,7 +1,8 @@
 ---
 title: Float
 date: 2018-08-26 10:53:39
-tags: CSS相关
+categories: CSS
+tags: CSS浮动
 ---
 
 # 深入理解 CSS 浮动

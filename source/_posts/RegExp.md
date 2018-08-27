@@ -1,5 +1,7 @@
 ---
 title: 正则表达式参考手册
+categories: Regexp
+tags: 正则表达式
 ---
 
 ## 为什么要正则表达式？
