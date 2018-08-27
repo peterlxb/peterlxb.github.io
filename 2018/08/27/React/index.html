@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1-React 出现的历史背景和特性介绍Facebook 内部如图片所示的功能:好友请求，消息列表，状态信息。出现的问题:当到达一个新的消息时，图中的数字 3 并没有及时更新，或者明明点开了这个新消息，数字 3 也并没有消失。 问题出现的根源需要知道非常多的细节才能更新页面上的 UI以往做 web 开发的时候碰到需要局部更新页面上的状态，就需要去操作这个 DOM 节点，这时候就要用到 DOM AP">
+<meta name="keywords" content="React fundamentals">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React入门01-基本概念">
+<meta property="og:url" content="http://yoursite.com/2018/08/27/React/index.html">
+<meta property="og:site_name" content="拉普拉斯">
+<meta property="og:description" content="1-React 出现的历史背景和特性介绍Facebook 内部如图片所示的功能:好友请求，消息列表，状态信息。出现的问题:当到达一个新的消息时，图中的数字 3 并没有及时更新，或者明明点开了这个新消息，数字 3 也并没有消失。 问题出现的根源需要知道非常多的细节才能更新页面上的 UI以往做 web 开发的时候碰到需要局部更新页面上的状态，就需要去操作这个 DOM 节点，这时候就要用到 DOM AP">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41755509-61833b66-760a-11e8-9ae6-ff9c4e27fb90.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41755662-05390308-760b-11e8-8bda-12d28673e86a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41755727-59eab716-760b-11e8-860a-87b4b2782ed1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41755816-cd396c26-760b-11e8-9f43-092fca3265a8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41755856-f1d223c0-760b-11e8-905a-619bdee9e507.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41755960-5dc72da0-760c-11e8-947c-197a211c49c6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41756075-080a88e8-760d-11e8-8ca0-792f83a8f5c9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41756118-49d0c616-760d-11e8-8351-45bc83ac34e2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41756132-6008fbce-760d-11e8-9e69-20a765dc63e9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41806761-55bbc734-76f6-11e8-8ff5-3e4493c4d441.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41806816-48fc385c-76f7-11e8-98c0-9f76c54c06a8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41806831-8479b922-76f7-11e8-88f0-7706c16d5188.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41806917-c60cc1e4-76f8-11e8-8e2b-fae265116941.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41807087-b6ec14fa-76fb-11e8-9d2e-fc2b3a72c4df.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41817441-d8b7c660-77cd-11e8-90ac-53a4553c9ae7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41817446-e8cb4e28-77cd-11e8-986b-e9b797720e9f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41817451-f9f48b92-77cd-11e8-9a32-aa1300ddc7c9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41817459-132afa1a-77ce-11e8-87a4-35d907a552ad.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41817465-21b0e13a-77ce-11e8-845a-e463f8e138bb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41817467-2e9c5276-77ce-11e8-9b03-436b6d9b2599.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41817469-3c3288e2-77ce-11e8-85d6-0295bb9437dd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8121883/41817473-4b38c838-77ce-11e8-9835-2188dd88d958.png">
+<meta property="og:updated_time" content="2018-08-27T14:16:25.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React入门01-基本概念">
+<meta name="twitter:description" content="1-React 出现的历史背景和特性介绍Facebook 内部如图片所示的功能:好友请求，消息列表，状态信息。出现的问题:当到达一个新的消息时，图中的数字 3 并没有及时更新，或者明明点开了这个新消息，数字 3 也并没有消失。 问题出现的根源需要知道非常多的细节才能更新页面上的 UI以往做 web 开发的时候碰到需要局部更新页面上的状态，就需要去操作这个 DOM 节点，这时候就要用到 DOM AP">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/8121883/41755509-61833b66-760a-11e8-9ae6-ff9c4e27fb90.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/27/React/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>React入门01-基本概念 | 拉普拉斯</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">拉普拉斯</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/React/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peter Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="拉普拉斯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React入门01-基本概念
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-27 22:12:40 / Modified: 22:16:25" itemprop="dateCreated datePublished" datetime="2018-08-27T22:12:40+08:00">2018-08-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/React学习笔记/" itemprop="url" rel="index"><span itemprop="name">React学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-React-出现的历史背景和特性介绍"><a href="#1-React-出现的历史背景和特性介绍" class="headerlink" title="1-React 出现的历史背景和特性介绍"></a>1-React 出现的历史背景和特性介绍</h1><p>Facebook 内部<br><img src="https://user-images.githubusercontent.com/8121883/41755509-61833b66-760a-11e8-9ae6-ff9c4e27fb90.png" alt="2018-06-22 10 50 45"><br>如图片所示的功能:好友请求，消息列表，状态信息。<br>出现的问题:当到达一个新的消息时，图中的数字 3 并没有及时更新，或者明明点开了这个新消息，数字 3 也并没有消失。</p>
+<h2 id="问题出现的根源"><a href="#问题出现的根源" class="headerlink" title="问题出现的根源"></a>问题出现的根源</h2><p><img src="https://user-images.githubusercontent.com/8121883/41755662-05390308-760b-11e8-8bda-12d28673e86a.png" alt="2018-06-22 10 57 00"><br>需要知道非常多的细节才能更新页面上的 UI<br><img src="https://user-images.githubusercontent.com/8121883/41755727-59eab716-760b-11e8-860a-87b4b2782ed1.png" alt="2018-06-22 10 59 11"><br>以往做 web 开发的时候碰到需要局部更新页面上的状态，就需要去操作这个 DOM 节点，这时候就要用到 DOM API，只有熟练掌握了上图中的方法才能顺利完成页面的局部更新。<br>这也说明了一个问题，当要做比较复杂的页面操作，就需要关注很多的细节。</p>
+<h2 id="React-提出的解决方案"><a href="#React-提出的解决方案" class="headerlink" title="React 提出的解决方案"></a>React 提出的解决方案</h2><p><img src="https://user-images.githubusercontent.com/8121883/41755816-cd396c26-760b-11e8-9f43-092fca3265a8.png" alt="2018-06-22 11 02 10"><br><strong>用一个聊天应用的示例来说明</strong><br>这个聊天应用需要将新消息到达时展示在页面上。<br>首先是传统 web 开发的局部更新<br><img src="https://user-images.githubusercontent.com/8121883/41755856-f1d223c0-760b-11e8-905a-619bdee9e507.png" alt="2018-06-22 11 03 20"><br>首先我们需要知道来的消息中，哪条是新的消息。然后针对新消息创建一个 DOM 节点，并且把这个节点更新到 UI 上。<br><img src="https://user-images.githubusercontent.com/8121883/41755960-5dc72da0-760c-11e8-947c-197a211c49c6.png" alt="2018-06-22 11 06 40"><br>React 的思路:始终是整体刷新。<br>前后是两个状态，一个是两条消息，一个是三条消息。它并不关注哪条消息是新的。<br><strong>它的逻辑是把整个消息展示在 UI 上。</strong><br>React 并不关心细节，当 React 发现前后两个状态变了，相应的 UI 也会变化，React 自动完成 UI 更新的操作。<br>这样就把我们从细节操作的复杂度中解放出来，我们只需要关心状态及最终 UI 长什么样。</p>
+<h3 id="对比传统的-web-开发，React-的特点如下"><a href="#对比传统的-web-开发，React-的特点如下" class="headerlink" title="对比传统的 web 开发，React 的特点如下"></a>对比传统的 web 开发，React 的特点如下</h3><p><img src="https://user-images.githubusercontent.com/8121883/41756075-080a88e8-760d-11e8-8ca0-792f83a8f5c9.png" alt="2018-06-22 11 11 24"></p>
+<h2 id="React-解决了-UI-细节问题。"><a href="#React-解决了-UI-细节问题。" class="headerlink" title="React 解决了 UI 细节问题。"></a>React 解决了 UI 细节问题。</h2><p>数据模型的解决依赖 Flux 结构。</p>
+<h3 id="传统-MVC-难以扩展和维护"><a href="#传统-MVC-难以扩展和维护" class="headerlink" title="传统 MVC 难以扩展和维护"></a>传统 MVC 难以扩展和维护</h3><p><img src="https://user-images.githubusercontent.com/8121883/41756118-49d0c616-760d-11e8-8351-45bc83ac34e2.png" alt="2018-06-22 11 13 12"><br>它有非常多的 model，非常多的 view，这些 model 和 view 之间的使用关心是错综复杂的，而且是双向绑定的。<br>这导致的问题就是:当应用程序复杂了以后，出现了一个问题，很难去追踪究竟是 model 出现了问题，还是 view 出现了问题。</p>
+<h2 id="React-提出了-Flux-架构-单向数据流"><a href="#React-提出了-Flux-架构-单向数据流" class="headerlink" title="React 提出了 Flux 架构:单向数据流"></a>React 提出了 Flux 架构:单向数据流</h2><p><img src="https://user-images.githubusercontent.com/8121883/41756132-6008fbce-760d-11e8-9e69-20a765dc63e9.png" alt="2018-06-22 11 13 53"><br>Flux 架构并不是一个完整的技术实现，而是一种设计模式，它的核心思想就是单向数据流。<br>针对上图，一个完整的 Flux 架构流程就是:当 React Views 发生了一些用户操作，它会产生一个 action,这个 action 会通过 dispatcher 来 dispatch 出去，由 store 来进行处理，store 根据 action 来更新自己。<br>我们的 view 是绑定在 store 上的，所以 store 发生变化，view 也会更新。</p>
+<h1 id="2-以组件方式考虑构建-UI"><a href="#2-以组件方式考虑构建-UI" class="headerlink" title="2-以组件方式考虑构建 UI"></a>2-以组件方式考虑构建 UI</h1><p>React 中最核心的概念就是组件 component。组件可以让我们更直观地去描述我们的界面。</p>
+<h2 id="以构建一个下图所示的评论框为例"><a href="#以构建一个下图所示的评论框为例" class="headerlink" title="以构建一个下图所示的评论框为例"></a>以构建一个下图所示的评论框为例</h2><p><img src="https://user-images.githubusercontent.com/8121883/41806761-55bbc734-76f6-11e8-8ff5-3e4493c4d441.png" alt="2018-06-23 3 01 25"></p>
+<blockquote>
+<p>在传统模式下，我们可能需要定义一个 HTML 模版，然后通过 JavaScript 去获取一些数据，再把这些数据填充到模版中。下面会有一个 Form 表单，需要去绑定一些事件，去监听 submit 按钮去提交这个数据。</p>
+</blockquote>
+<h3 id="如果使用-React-组件化的方式-将-UI-组织成组件树的形式"><a href="#如果使用-React-组件化的方式-将-UI-组织成组件树的形式" class="headerlink" title="如果使用 React 组件化的方式 将 UI 组织成组件树的形式"></a>如果使用 React 组件化的方式 <strong>将 UI 组织成组件树的形式</strong></h3><p><img src="https://user-images.githubusercontent.com/8121883/41806816-48fc385c-76f7-11e8-98c0-9f76c54c06a8.png" alt="2018-06-23 3 07 47"></p>
+<blockquote>
+<p>可以把这个评论框分成几个部分:首先整个评论框就是一个大的组件，然后中间评论的 List 列表是一个组件，最后的 Form 又是一个组件，几个组件共同完成了一个功能。</p>
+</blockquote>
+<p>通过这种方式可以很好很直观的描述我们的 UI，而且很自然的把 UI 拆分成比较小的独立的部分。</p>
+<h2 id="理解-React-组件"><a href="#理解-React-组件" class="headerlink" title="理解 React 组件"></a>理解 React 组件</h2><p><img src="https://user-images.githubusercontent.com/8121883/41806831-8479b922-76f7-11e8-88f0-7706c16d5188.png" alt="2018-06-23 3 09 56"></p>
+<blockquote>
+<p>1.React 组件一般不提供方法，而是某种状态机<br>2.React 组件可以理解为一个纯函数 3.单向数据绑定<br><strong>由属性(props)和状态(state)最终得到一个 View。</strong></p>
+</blockquote>
+<blockquote>
+<p>React 组件的状态(state)由两种。一种是由外部传进来的属性(props)，一种是内部维持的状态(state)。<br>二者共同决定了 View 长什么样。</p>
+</blockquote>
+<p>所以一个 React 组件可以理解为一个纯函数一样，它接受的参数是什么，输出的结果一定是确定的。<br>React 组件一般不会提供方法。<br>单向数据流:</p>
+<blockquote>
+<p>外部要传数据进来，一定是通过 props 传进来。</p>
+</blockquote>
+<p>如果组件外部要知道 View 内部发生了什么变化，那一定是 View 内部暴露了一个事件来让组件外部知道我们的组件内部发生了变化。</p>
+<p>##创建一个简单的组件:TabSelect<br><img src="https://user-images.githubusercontent.com/8121883/41806917-c60cc1e4-76f8-11e8-8e2b-fae265116941.png" alt="2018-06-23 3 18 55"></p>
+<h3 id="React-组件的两种类型-受控组件和非受控组件"><a href="#React-组件的两种类型-受控组件和非受控组件" class="headerlink" title="React 组件的两种类型:受控组件和非受控组件"></a>React 组件的两种类型:受控组件和非受控组件</h3><p><img src="https://user-images.githubusercontent.com/8121883/41807087-b6ec14fa-76fb-11e8-9d2e-fc2b3a72c4df.png" alt="2018-06-23 3 39 50"></p>
+<h4 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a><a href="https://reactjs.org/docs/forms.html" target="_blank" rel="noopener">受控组件</a></h4><blockquote>
+<p>受控组件 Controlled Components 必须传递两个值，一个 value，一个 onChange。</p>
+</blockquote>
+<p>它的值是什么取决于外部给它的属性而不是用户的输入，如果不指定 onChange 事件，输入任何值 value 都不会有变化。它的状态来自外部</p>
+<h4 id="非受控组件"><a href="#非受控组件" class="headerlink" title="非受控组件"></a><a href="https://reactjs.org/docs/uncontrolled-components.html" target="_blank" rel="noopener">非受控组件</a></h4><blockquote>
+<p>Uncontrolled Components 非受控组件 它的状态由内部维护。<br>外部要用的时候是通过其它方式拿到它的值，这样的组件不需要传递 value 和 onChange 事件，但是一定要让外界知道这个原生 DOM node 是什么，从而才能够拿到它的值。</p>
+</blockquote>
+<h3 id="何时创建组件-单一职责原则"><a href="#何时创建组件-单一职责原则" class="headerlink" title="何时创建组件:单一职责原则"></a>何时创建组件:单一职责原则</h3><blockquote>
+<p>1.每个组件只做一件事 2.如果组件变得复杂，那么应该拆分成小组件<br>组件是构建 UI 的最小的元素，每个组件都应该尽量地小，这样才能使复杂度分散出去。</p>
+</blockquote>
+<h4 id="拆分小组件有两个好处"><a href="#拆分小组件有两个好处" class="headerlink" title="拆分小组件有两个好处"></a>拆分小组件有两个好处</h4><p>第一可以让复杂度拆分到不同的地方，第二是性能问题：</p>
+<blockquote>
+<p>当一个组件很大时，任何一个状态变化，整个组件都会进行刷新。如果拆分成小组件，这些小组件的状态可能没有变化，那它就不需要重新刷新，这样的化可以提高性能。</p>
+</blockquote>
+<h3 id="数据状态管理-DRY-原则"><a href="#数据状态管理-DRY-原则" class="headerlink" title="数据状态管理:DRY 原则"></a>数据状态管理:DRY 原则</h3><blockquote>
+<p>1.能计算得到的状态就不要单独存储 2.组件尽量无状态，所需数据通过 props 获取<br>能计算得到的状态在用的时候去计算它，而不是单独存储起来。<br>组件尽量无状态的好处是，可以让组件尽量是一个纯组件，他可以具有更好的性能，并且可以更容易被重用。</p>
+</blockquote>
+<h1 id="3-理解-JSX-不是模板语言，只是一种语法糖"><a href="#3-理解-JSX-不是模板语言，只是一种语法糖" class="headerlink" title="3-理解 JSX: 不是模板语言，只是一种语法糖"></a>3-理解 JSX: 不是模板语言，只是一种语法糖</h1><p>示例 JSX 语法<br><img src="https://user-images.githubusercontent.com/8121883/41817441-d8b7c660-77cd-11e8-90ac-53a4553c9ae7.png" alt="2018-06-24 4 43 55"></p>
+<h2 id="JSX-的本质-动态创建组件的语法糖"><a href="#JSX-的本质-动态创建组件的语法糖" class="headerlink" title="JSX 的本质:动态创建组件的语法糖"></a>JSX 的本质:动态创建组件的语法糖</h2><h3 id="JSX-在-JavaScript-代码中直接写-HTML-标记"><a href="#JSX-在-JavaScript-代码中直接写-HTML-标记" class="headerlink" title="JSX:在 JavaScript 代码中直接写 HTML 标记"></a>JSX:在 JavaScript 代码中直接写 HTML 标记</h3><p><img src="https://user-images.githubusercontent.com/8121883/41817446-e8cb4e28-77cd-11e8-986b-e9b797720e9f.png" alt="2018-06-24 4 44 38"></p>
+<h3 id="组件的例子"><a href="#组件的例子" class="headerlink" title="组件的例子"></a>组件的例子</h3><p><img src="https://user-images.githubusercontent.com/8121883/41817451-f9f48b92-77cd-11e8-9a32-aa1300ddc7c9.png" alt="2018-06-24 4 44 55"></p>
+<h2 id="在-JSX-中使用表达式"><a href="#在-JSX-中使用表达式" class="headerlink" title="在 JSX 中使用表达式"></a>在 JSX 中使用表达式</h2><h3 id="1-JSX-本身也是表达式"><a href="#1-JSX-本身也是表达式" class="headerlink" title="1. JSX 本身也是表达式"></a>1. JSX 本身也是表达式</h3><p><img src="https://user-images.githubusercontent.com/8121883/41817459-132afa1a-77ce-11e8-87a4-35d907a552ad.png" alt="2018-06-24 4 45 47"></p>
+<h3 id="2-在属性中使用表达式"><a href="#2-在属性中使用表达式" class="headerlink" title="2. 在属性中使用表达式"></a>2. 在属性中使用表达式</h3><p><img src="https://user-images.githubusercontent.com/8121883/41817465-21b0e13a-77ce-11e8-845a-e463f8e138bb.png" alt="2018-06-24 4 46 13"></p>
+<h3 id="3-延展属性"><a href="#3-延展属性" class="headerlink" title="3. 延展属性"></a>3. 延展属性</h3><p><img src="https://user-images.githubusercontent.com/8121883/41817467-2e9c5276-77ce-11e8-9b03-436b6d9b2599.png" alt="2018-06-24 4 46 34"></p>
+<h3 id="4-表达式作为子元素"><a href="#4-表达式作为子元素" class="headerlink" title="4. 表达式作为子元素"></a>4. 表达式作为子元素</h3><p><img src="https://user-images.githubusercontent.com/8121883/41817469-3c3288e2-77ce-11e8-85d6-0295bb9437dd.png" alt="2018-06-24 4 46 59"></p>
+<h2 id="对比其它模板语言"><a href="#对比其它模板语言" class="headerlink" title="对比其它模板语言"></a>对比其它模板语言</h2><p><img src="https://user-images.githubusercontent.com/8121883/41817473-4b38c838-77ce-11e8-9835-2188dd88d958.png" alt="2018-06-24 4 47 13"></p>
+<h2 id="JSX-优点"><a href="#JSX-优点" class="headerlink" title="JSX 优点"></a>JSX 优点</h2><blockquote>
+<p>1.声明式创建界面的直观 2.代码动态创建界面的灵活 3.无需学习新的模板语言</p>
+</blockquote>
+<h2 id="约定-自定义组件以大写字母开头"><a href="#约定-自定义组件以大写字母开头" class="headerlink" title="约定:自定义组件以大写字母开头"></a>约定:自定义组件以大写字母开头</h2><blockquote>
+<p><strong>1.React 认为小写的 tag 是原生 DOM 节点，如 div</strong> &gt; <strong>2.大写字母开头为自定义组件</strong> &gt; <strong>3.JSX 标记可以直接使用属性语法，例如&lt;menu.Item /&gt;</strong></p>
+</blockquote>
+<p><a href="https://www.robinwieruch.de/tips-to-learn-react-redux/" target="_blank" rel="noopener">原文 tips-to-learn-react-redux</a></p>
+<ol>
+<li><strong>学习 React 的技巧</strong></li>
+<li><strong>学习 Redux 的技巧</strong></li>
+<li><strong>Testing 的技巧</strong></li>
+<li><strong>一些建议</strong></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-fundamentals/" rel="tag"># React fundamentals</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/26/Float/" rel="next" title="Float">
+                <i class="fa fa-chevron-left"></i> Float
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Peter Liu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=187402&auto=1&height=66"></iframe>
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-React-出现的历史背景和特性介绍"><span class="nav-number">1.</span> <span class="nav-text">1-React 出现的历史背景和特性介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题出现的根源"><span class="nav-number">1.1.</span> <span class="nav-text">问题出现的根源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-提出的解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">React 提出的解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对比传统的-web-开发，React-的特点如下"><span class="nav-number">1.2.1.</span> <span class="nav-text">对比传统的 web 开发，React 的特点如下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-解决了-UI-细节问题。"><span class="nav-number">1.3.</span> <span class="nav-text">React 解决了 UI 细节问题。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统-MVC-难以扩展和维护"><span class="nav-number">1.3.1.</span> <span class="nav-text">传统 MVC 难以扩展和维护</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-提出了-Flux-架构-单向数据流"><span class="nav-number">1.4.</span> <span class="nav-text">React 提出了 Flux 架构:单向数据流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-以组件方式考虑构建-UI"><span class="nav-number">2.</span> <span class="nav-text">2-以组件方式考虑构建 UI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#以构建一个下图所示的评论框为例"><span class="nav-number">2.1.</span> <span class="nav-text">以构建一个下图所示的评论框为例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如果使用-React-组件化的方式-将-UI-组织成组件树的形式"><span class="nav-number">2.1.1.</span> <span class="nav-text">如果使用 React 组件化的方式 将 UI 组织成组件树的形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解-React-组件"><span class="nav-number">2.2.</span> <span class="nav-text">理解 React 组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-组件的两种类型-受控组件和非受控组件"><span class="nav-number">2.2.1.</span> <span class="nav-text">React 组件的两种类型:受控组件和非受控组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#受控组件"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">受控组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非受控组件"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">非受控组件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#何时创建组件-单一职责原则"><span class="nav-number">2.2.2.</span> <span class="nav-text">何时创建组件:单一职责原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拆分小组件有两个好处"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">拆分小组件有两个好处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据状态管理-DRY-原则"><span class="nav-number">2.2.3.</span> <span class="nav-text">数据状态管理:DRY 原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-理解-JSX-不是模板语言，只是一种语法糖"><span class="nav-number">3.</span> <span class="nav-text">3-理解 JSX: 不是模板语言，只是一种语法糖</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-的本质-动态创建组件的语法糖"><span class="nav-number">3.1.</span> <span class="nav-text">JSX 的本质:动态创建组件的语法糖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX-在-JavaScript-代码中直接写-HTML-标记"><span class="nav-number">3.1.1.</span> <span class="nav-text">JSX:在 JavaScript 代码中直接写 HTML 标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的例子"><span class="nav-number">3.1.2.</span> <span class="nav-text">组件的例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-JSX-中使用表达式"><span class="nav-number">3.2.</span> <span class="nav-text">在 JSX 中使用表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-JSX-本身也是表达式"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. JSX 本身也是表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在属性中使用表达式"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 在属性中使用表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-延展属性"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. 延展属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-表达式作为子元素"><span class="nav-number">3.2.4.</span> <span class="nav-text">4. 表达式作为子元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对比其它模板语言"><span class="nav-number">3.3.</span> <span class="nav-text">对比其它模板语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX-优点"><span class="nav-number">3.4.</span> <span class="nav-text">JSX 优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#约定-自定义组件以大写字母开头"><span class="nav-number">3.5.</span> <span class="nav-text">约定:自定义组件以大写字母开头</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peter Liu</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
