@@ -301,6 +301,383 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/Transition过渡/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peter Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="拉普拉斯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/28/Transition过渡/" itemprop="url">
+                  Transition过渡
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-28 22:15:26 / Modified: 22:25:55" itemprop="dateCreated datePublished" datetime="2018-08-28T22:15:26+08:00">2018-08-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Transition-过渡"><a href="#Transition-过渡" class="headerlink" title="Transition 过渡"></a>Transition 过渡</h2><h3 id="参考网站-transition"><a href="#参考网站-transition" class="headerlink" title="参考网站-transition"></a><a href="https://css-tricks.com/almanac/properties/t/transition/" target="_blank" rel="noopener">参考网站-transition</a></h3><p>在 CSS3 中，我们可以使用 transition 属性来将元素的某一个属性从“一个属性值”在指定的时间内平滑地过渡到“另外一个属性值”来实现动画效果。</p>
+<p>CSS transform 属性所实现的元素变形，呈现的仅仅是一个“结果”，而 CSS transition 呈现的是一种过渡“过程”，通俗点说就是一种动画转换过程，如渐显、渐隐、动画快慢等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语法:transition:属性 持续时间 过渡方法 延迟时间;</span><br></pre></td></tr></table></figure>
+<p>CSS3 的过度 transition 属性是一个复合属性，主要包含 4 个子属性:</p>
+<h3 id="transition-property-对元素的哪一个属性进行操作"><a href="#transition-property-对元素的哪一个属性进行操作" class="headerlink" title="transition-property:对元素的哪一个属性进行操作;"></a>transition-property:对元素的哪一个属性进行操作;</h3><p>对于 CSS3 过渡动画，大多数情况下都是配合:hover 伪类来使用。其对应具有过渡的 CSS 属性主要有:<br><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%887.36.13.png" alt="2018-06-22 10 50 45"></p>
+<h3 id="transition-duration-过渡的持续时间"><a href="#transition-duration-过渡的持续时间" class="headerlink" title="transition-duration:过渡的持续时间;"></a>transition-duration:过渡的持续时间;</h3><blockquote>
+<p>说明:transition-duration 属性取值是一个时间，单位为 s(秒)，可以为小数如 0.5s。 如果提供多个属性值，以逗号进行分隔。</p>
+</blockquote>
+<h3 id="transition-timing-function-过渡使用的方法-函数"><a href="#transition-timing-function-过渡使用的方法-函数" class="headerlink" title="transition-timing-function:过渡使用的方法(函数);"></a>transition-timing-function:过渡使用的方法(函数);</h3><p>使用 transition-timing-function 属性来定义过渡方式。所谓的“过渡方式”主要用来指 定动画在过渡时间内的速率。</p>
+<p>默认值:ease<br>transition-timing-function 属性取值共有 5 种，具体如下:</p>
+<p><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%887.38.54.png" alt="2018-06-22 10 50 45"></p>
+<p>取值:</p>
+<ul>
+<li>linear: 线性过渡。等同于贝塞尔曲线(0.0, 0.0, 1.0, 1.0)</li>
+<li>ease: 平滑过渡。等同于贝塞尔曲线(0.25, 0.1, 0.25, 1.0)</li>
+<li>ease-in: 由慢到快。等同于贝塞尔曲线(0.42, 0, 1.0, 1.0)</li>
+<li>ease-out: 由快到慢。等同于贝塞尔曲线(0, 0, 0.58, 1.0)</li>
+<li>ease-in-out:由慢到快再到慢。等同于贝塞尔曲线(0.42, 0, 0.58, 1.0)</li>
+</ul>
+<h3 id="transition-delay-可选属性，指定过渡开始出现的延迟时间"><a href="#transition-delay-可选属性，指定过渡开始出现的延迟时间" class="headerlink" title="transition-delay:可选属性，指定过渡开始出现的延迟时间;"></a>transition-delay:可选属性，指定过渡开始出现的延迟时间;</h3><p>transition-delay 属性取值是一个时间，单位为 s(秒)，可以为小数如 0.5s。</p>
+<h3 id="transition"><a href="#transition" class="headerlink" title="transition"></a>transition</h3><p>如果想要使用 transition 属性同时对多个属性进行实现平滑过渡效果，只需要在 transition-property 属性添加多个属性名即可，其中属性名之间用英文逗号隔开。然后各自可以有各自不同的延续时间和其时间的速率变换方式。</p>
+<p>但需要值得注意的一点:第一个时间的值为 transition-duration，第二个为 transition-delay。<br>例如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a&#123; transition: background 0.8s ease-in 0.3,color 0.6s ease-out 0.3;&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/transform-2d变形/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peter Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="拉普拉斯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/28/transform-2d变形/" itemprop="url">
+                  transform-2d变形
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-28 21:52:09 / Modified: 22:12:17" itemprop="dateCreated datePublished" datetime="2018-08-28T21:52:09+08:00">2018-08-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="transform-2d-变形"><a href="#transform-2d-变形" class="headerlink" title="transform-2d 变形"></a>transform-2d 变形</h2><h3 id="参考网站-transform"><a href="#参考网站-transform" class="headerlink" title="参考网站-transform"></a><a href="https://css-tricks.com/almanac/properties/t/transform/" target="_blank" rel="noopener">参考网站-transform</a></h3><p>在 CSS3 中，我们可以使用 transform 属性来实现文字或图像的的各种变形效果， 如位移、缩放、旋转、倾斜</p>
+<p><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%886.44.20.png" alt="2018-06-22 10 50 45"></p>
+<h3 id="旋转-rotate-方法"><a href="#旋转-rotate-方法" class="headerlink" title="旋转 rotate()方法"></a>旋转 rotate()方法</h3><p>用 rotate()方法来将元素相对中心原点进行旋转。</p>
+<p><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%886.46.20.png" alt="2018-06-22 10 50 45"></p>
+<blockquote>
+<p>语法:transform:rotate(度数);说明:度数指的是元素相对中心原点进行旋转的度数，单位为 deg。</p>
+</blockquote>
+<p>其中，deg 是 degree(度数)的缩写。</p>
+<p>它主要在二维空间内进行操作，设置一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原<br>点中心顺时针旋转;如果这个值为负值，元素相对原点中心逆时针旋转。</p>
+<h3 id="位移-translate-方法"><a href="#位移-translate-方法" class="headerlink" title="位移 translate()方法"></a>位移 translate()方法</h3><p><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%886.48.32.png" alt="2018-06-22 10 50 45"></p>
+<p>在 CSS3 中，我们可以使用 translate()方法将元素沿着水平方向(X 轴)和垂直方 向(Y 轴)移动.</p>
+<h3 id="缩放-scale-方法"><a href="#缩放-scale-方法" class="headerlink" title="缩放 scale()方法"></a>缩放 scale()方法</h3><p>缩放，指的是“缩小”和“放大”。在 CSS3 中，我们可以使用 scale()方法来将元 素根据中心原点进行缩放。</p>
+<p><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%886.48.32.png" alt="2018-06-22 10 50 45"></p>
+<p>缩放 scale()方法也有 3 种情况:</p>
+<h4 id="1-scaleX-x-元素仅水平方向缩放-X-轴缩放"><a href="#1-scaleX-x-元素仅水平方向缩放-X-轴缩放" class="headerlink" title="(1)scaleX(x):元素仅水平方向缩放(X 轴缩放);"></a>(1)scaleX(x):元素仅水平方向缩放(X 轴缩放);</h4><blockquote>
+<p>说明:x 表示元素沿着水平方向(X 轴)缩放的倍数，如果大于 1 就代表放大;如果小于 1 就代表缩小。</p>
+</blockquote>
+<h4 id="2-scaleY-y-元素仅垂直方向缩放-Y-轴缩放"><a href="#2-scaleY-y-元素仅垂直方向缩放-Y-轴缩放" class="headerlink" title="(2)scaleY(y):元素仅垂直方向缩放(Y 轴缩放);"></a>(2)scaleY(y):元素仅垂直方向缩放(Y 轴缩放);</h4><h4 id="3-scale-x-y-元素水平方向和垂直方向同时缩放-X-轴和-Y-轴同时缩放"><a href="#3-scale-x-y-元素水平方向和垂直方向同时缩放-X-轴和-Y-轴同时缩放" class="headerlink" title="(3)scale(x,y):元素水平方向和垂直方向同时缩放(X 轴和 Y 轴同时缩放);"></a>(3)scale(x,y):元素水平方向和垂直方向同时缩放(X 轴和 Y 轴同时缩放);</h4><h3 id="倾斜-skew-方法"><a href="#倾斜-skew-方法" class="headerlink" title="倾斜 skew()方法"></a>倾斜 skew()方法</h3><p>它可以将一个对象以其中心位置围绕着 X 轴和 Y 轴按照一定的角度倾斜。</p>
+<p>这与 rotate()函 数的旋转不同，rotate()函数只是旋转，而不会改变元素的形状。skew()函数不会旋转，而 只会改变元素的形状。</p>
+<p>skew()方法跟 translate()方法、scale()方法一样，也有 3 种情况:</p>
+<blockquote>
+<p>(1)skewX(x):使元素在水平方向倾斜(X 轴倾斜);transform:skewX(x);</p>
+</blockquote>
+<blockquote>
+<p>(2)skewY(y):使元素在垂直方向倾斜(Y 轴倾斜);transform:skewY(y);</p>
+</blockquote>
+<p>skew 的默认原点 transform-origin 是这个物件的中心点</p>
+<h4 id="skewX-30deg-如下图-沿着-X-轴倾斜，沿着-Y-轴呈逆时针旋转-30-度。"><a href="#skewX-30deg-如下图-沿着-X-轴倾斜，沿着-Y-轴呈逆时针旋转-30-度。" class="headerlink" title="skewX(30deg) 如下图:(沿着 X 轴倾斜，沿着 Y 轴呈逆时针旋转 30 度。)"></a>skewX(30deg) 如下图:(沿着 X 轴倾斜，沿着 Y 轴呈逆时针旋转 30 度。)</h4><p><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%886.59.52.png" alt="2018-06-22 10 50 45"></p>
+<h4 id="skewY-10deg-如下图-沿着-y-轴倾斜，沿着-X-轴呈顺时针旋转-10-度。"><a href="#skewY-10deg-如下图-沿着-y-轴倾斜，沿着-X-轴呈顺时针旋转-10-度。" class="headerlink" title="skewY(10deg)如下图:(沿着 y 轴倾斜，沿着 X 轴呈顺时针旋转 10 度。)"></a>skewY(10deg)如下图:(沿着 y 轴倾斜，沿着 X 轴呈顺时针旋转 10 度。)</h4><p><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%887.01.04.png" alt="2018-06-22 10 50 45"></p>
+<h3 id="transform-origin-属性"><a href="#transform-origin-属性" class="headerlink" title="transform-origin 属性"></a>transform-origin 属性</h3><p>任何一个元素都有一个中心原点，默认情况下，元素的中心原点位于 X 轴和 Y 轴的 50%处,</p>
+<p>如下图所示:<br><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%887.02.28.png" alt="2018-06-22 10 50 45"></p>
+<p>默认情况下，CSS3 变形进行的位移、缩放、旋转、倾斜都是以元素的中心原点(50%,50%)进行变形。</p>
+<p>但很多时候，我们可以通过 transform-origin 属性来改变元素变形时的中心原点位置。</p>
+<blockquote>
+<p>语法:<br>transform-origin:[<percentage>|<length>|left|center1|right][<percentage> | <length> | top | center2 | bottom ]?</length></percentage></length></percentage></p>
+</blockquote>
+<blockquote>
+<p>默认值:50% 50%，效果等同于 center center</p>
+</blockquote>
+<p><img src="https://peterlxb.gitbooks.io/front-end-study-notes/content/assets/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-10%20%E4%B8%8A%E5%8D%887.03.44.png" alt="2018-06-22 10 50 45"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/React/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1134,7 +1511,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1174,7 +1551,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
